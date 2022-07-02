@@ -3,18 +3,18 @@
     <section class="intro">
       <h1>Get the latest tech news</h1>
     </section>
-    <PostListVue/>
+    <PostListVue is-admin="true" />
   </div>
 </template>
 <script>
-import PostListVue from '../components/Post/PostList.vue'
+import PostListVue from "../components/Post/PostList.vue";
 export default {
   components: {
-    PostListVue
-  }
-}
+    PostListVue,
+  },
+};
 </script>
-<style>
+<style scoped>
 .intro {
   height: 300px;
   position: relative;
@@ -22,7 +22,7 @@ export default {
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
-  background-image: url('https://blog.janestreet.com/announcing-our-market-prediction-kaggle-competition-index/kaggle_blogpost.jpg');
+  background-image: url("https://blog.janestreet.com/announcing-our-market-prediction-kaggle-competition-index/kaggle_blogpost.jpg");
 }
 
 .intro h1 {
@@ -44,13 +44,5 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 </style>

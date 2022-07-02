@@ -1,19 +1,22 @@
 <template>
-<div class="single-post-page">
+  <div class="single-post-page">
     <section class="post">
-        <h1 class="post-title">Title of the post</h1>
-        <div class="post-details">
-            <div>last updated on XXX</div>
-            <div>written by</div>
-        </div>
-        <p>content of the post</p>
-    </section >
-    <section class="post-feedback">
-        <p>Let me know what you think about the post, send email to me <a href="">feedback@yourdomain.com</a> </p>
+      <h1 class="post-title">Title of the post</h1>
+      <div class="post-details">
+        <div>last updated on XXX</div>
+        <div>written by</div>
+      </div>
+      <p>content of the post</p>
     </section>
-</div>
+    <section class="post-feedback">
+      <p>
+        Let me know what you think about the post, send email to me
+        <a href="">feedback@yourdomain.com</a>
+      </p>
+    </section>
+  </div>
 </template>
-<style>
+<style scoped>
 .single-post-page {
   padding: 30px;
   text-align: center;
