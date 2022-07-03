@@ -3,14 +3,20 @@
     <section class="intro">
       <h1>Get the latest tech news</h1>
     </section>
-    <PostListVue is-admin="true" />
+    <PostListVue :posts="loadedPosts" />
   </div>
 </template>
 <script>
+import { title } from "process";
 import PostListVue from "../components/Post/PostList.vue";
 export default {
   components: {
     PostListVue,
+  },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts;
+    },
   },
 };
 </script>

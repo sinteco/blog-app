@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title of the post</h1>
+      <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div>last updated on XXX</div>
-        <div>written by</div>
+        <div>{{ loadedPost.updatedDate }}</div>
+        <div>{{ loadedPost.author }}</div>
       </div>
-      <p>content of the post</p>
+      <p>{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -16,6 +16,26 @@
     </section>
   </div>
 </template>
+<script>
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: 1,
+          previewText: "Hello London is calling",
+          title: "London calling (ID: " + context.routh.params.id + ")",
+          author: "Maximillan",
+          updatedDate: new Date(),
+          contect: "some dummy text",
+          thumbnail:
+            "https://d27fp5ulgfd7w2.cloudfront.net/wp-content/uploads/2019/01/08160759/tech-blogs-1.jpg",
+        },
+      });
+    }, 1000);
+  },
+};
+</script>
 <style scoped>
 .single-post-page {
   padding: 30px;
