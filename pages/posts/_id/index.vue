@@ -17,22 +17,22 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: {
-          id: 1,
-          previewText: "Hello London is calling",
-          title: "London calling (ID: " + context.routh.params.id + ")",
-          author: "Maximillan",
-          updatedDate: new Date(),
-          contect: "some dummy text",
-          thumbnail:
-            "https://d27fp5ulgfd7w2.cloudfront.net/wp-content/uploads/2019/01/08160759/tech-blogs-1.jpg",
-        },
-      });
-    }, 1000);
+  asyncData(context) {
+    return axios
+      .get(
+        "https://nuxtblog-7a06e-default-rtdb.europe-west1.firebasedatabase.app/posts/" +
+          context.params.id +
+          ".json"
+      )
+      .then((res) => {
+        return {
+          loadedPost: res.data,
+        };
+      })
+      .catch((e) => context.error(e));
   },
 };
 </script>

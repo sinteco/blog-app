@@ -1,14 +1,17 @@
 <template>
-  <form @sumbit.prevent="onSave">
+  <form @submit.prevent="onSave">
     <AppControlInputVue v-model="editedPost.author"
       >Author Name</AppControlInputVue
     >
     <AppControlInputVue v-model="editedPost.title">Title</AppControlInputVue>
-    <AppControlInputVue v-model="editedPost.thumbnailLink"
+    <AppControlInputVue v-model="editedPost.thumbnail"
       >Thumbnail Link</AppControlInputVue
     >
     <AppControlInputVue control-type="textarea" v-model="editedPost.content"
       >Content</AppControlInputVue
+    >
+    <AppControlInputVue control-type="textarea" v-model="editedPost.previewText"
+      >Preview Test</AppControlInputVue
     >
     <AppButtonVue type="submit">Save</AppButtonVue>
     <AppButtonVue
@@ -35,8 +38,9 @@ export default {
         : {
             author: "",
             title: "",
-            thumbnailLink: "",
+            thumbnail: "",
             content: "",
+            previewText: "",
           },
     };
   },
@@ -48,7 +52,7 @@ export default {
   },
   methods: {
     onSave() {
-      console.log(this.editedPost);
+      this.$emit("submit", this.editedPost);
     },
     onCancel() {
       this.$router.push("/admin");
