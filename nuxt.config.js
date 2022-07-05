@@ -21,10 +21,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ["~assets/styles/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ["~plugins/core-components.js", "~plugins/date-filter.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,4 +37,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  transition: {
+    name: "fade",
+    mode: "out-in",
+  },
 };

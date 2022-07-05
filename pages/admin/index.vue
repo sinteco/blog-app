@@ -12,14 +12,8 @@
   </div>
 </template>
 <script>
-import PostListVue from "../../components/Post/PostList.vue";
-import AppButtonVue from "../../components/UI/AppButton.vue";
 export default {
   layout: "admin",
-  components: {
-    PostListVue,
-    AppButtonVue,
-  },
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
