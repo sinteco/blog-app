@@ -9,6 +9,13 @@ const createStore = () => {
       setPosts(state, posts) {
         state.loadedPosts = posts;
       },
+      addPost(state, post) {},
+      editPost(state, editPost) {
+        const postIndex = state.loadedPosts.findIndex(
+          (post) => (post.id = editPost.id)
+        );
+        state.loadedPosts[postIndex] = editPost;
+      },
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
@@ -27,6 +34,34 @@ const createStore = () => {
       },
       setPosts(vuexContext, posts) {
         vuexContext.commit("setPosts", posts);
+      },
+      addPost(vuexContextn, post) {
+        const createdPost = { ...post, updatedDate: new Date() };
+        return axios
+          .post(
+            "https://nuxtblog-7a06e-default-rtdb.europe-west1.firebasedatabase.app/posts.json",
+            createdPost
+          )
+          .then((res) => {
+            vuexContextn.commit("addPost", {
+              ...createdPost,
+              id: res.data.name,
+            });
+          })
+          .catch((e) => console.log(e));
+      },
+      editPost(vuexContext, editedPost) {
+        return axios
+          .put(
+            "https://nuxtblog-7a06e-default-rtdb.europe-west1.firebasedatabase.app/posts/" +
+              editedPost.id +
+              ".json",
+            editedPost
+          )
+          .then((res) => {
+            vuexContext.commit("editPost", editedPost);
+          })
+          .catch((e) => console.log(e));
       },
     },
     getters: {

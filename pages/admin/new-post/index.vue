@@ -15,15 +15,9 @@ export default {
   },
   methods: {
     onSubmitted(postData) {
-      axios
-        .post(
-          "https://nuxtblog-7a06e-default-rtdb.europe-west1.firebasedatabase.app/posts.json",
-          { ...postData, updatedDate: new Date() }
-        )
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((e) => console.log(e));
+      this.$store.dispatch("addPost", postData).then(() => {
+        this.$router.push("/admin");
+      });
     },
   },
 };

@@ -8,7 +8,7 @@
     <section class="existing-posts">
       <h1>Existing Posts</h1>
     </section>
-    <PostListVue isAdmin />
+    <PostListVue isAdmin :posts="loadedPosts" />
   </div>
 </template>
 <script>
@@ -19,6 +19,11 @@ export default {
   components: {
     PostListVue,
     AppButtonVue,
+  },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts;
+    },
   },
 };
 </script>
